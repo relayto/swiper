@@ -1735,10 +1735,8 @@
     } // Subtract paddings
 
 
-    width = width - parseInt($el.css('padding-left') || 0, 10) - parseInt($el.css('padding-right') || 0, 10);
-    height = height - parseInt($el.css('padding-top') || 0, 10) - parseInt($el.css('padding-bottom') || 0, 10);
-    if (Number.isNaN(width)) width = 0;
-    if (Number.isNaN(height)) height = 0;
+    width = width - parseInt($el.css('padding-left'), 10) - parseInt($el.css('padding-right'), 10);
+    height = height - parseInt($el.css('padding-top'), 10) - parseInt($el.css('padding-bottom'), 10);
     extend$1(swiper, {
       width: width,
       height: height,
@@ -7964,7 +7962,15 @@
         return Math.round(16 * Math.random()).toString(16);
       };
 
-      return 'x'.repeat(size).replace(/x/g, randomChar);
+      var repeat = function repeat(char, count){
+        var res = '';
+        for(var i=0;i<count;i++){
+          res += char
+        }
+        return res;
+      }
+
+      return repeat('x', size).replace(/x/g, randomChar);
     },
     makeElFocusable: function makeElFocusable($el) {
       $el.attr('tabIndex', '0');
